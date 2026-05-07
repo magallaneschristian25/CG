@@ -1,249 +1,354 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced CSS Grid Demo</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Bootstrap Website</title>
+
+    <!-- Latest Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
     <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial, Helvetica, sans-serif;
-        }
-
         body{
-            background:#f4f6f9;
+            background:#f5f7fb;
+            font-family: Arial, sans-serif;
         }
 
-        /* ================= CONTAINER ================= */
-        .container{
-            display:grid;
-            grid-template-columns: 250px 1fr;
-            grid-template-rows:auto auto 1fr auto;
-            grid-template-areas:
-                "header header"
-                "sidebar hero"
-                "sidebar main"
-                "footer footer";
-            min-height:100vh;
+        /* NAVBAR */
+        .navbar{
+            background: linear-gradient(135deg,#0d6efd,#6610f2);
         }
 
-        /* ================= HEADER ================= */
-        .header{
-            grid-area:header;
-            background:#1e293b;
-            color:white;
-            padding:20px 40px;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            position:sticky;
-            top:0;
-            z-index:1000;
-            box-shadow:0 2px 10px rgba(0,0,0,0.1);
+        .navbar-brand,
+        .nav-link{
+            color:#fff !important;
+            font-weight:500;
         }
 
-        .header h1{
-            font-size:28px;
+        .nav-link:hover{
+            opacity:.8;
         }
 
-        .header nav{
-            display:flex;
-            gap:20px;
-        }
-
-        .header nav a{
-            text-decoration:none;
-            color:white;
-            font-weight:bold;
-            transition:0.3s;
-        }
-
-        .header nav a:hover{
-            color:#38bdf8;
-        }
-
-        /* ================= SIDEBAR ================= */
-        .sidebar{
-            grid-area:sidebar;
-            background:#0f172a;
-            color:white;
-            padding:30px 20px;
-            min-height:100%;
-        }
-
-        .sidebar h3{
-            margin-bottom:20px;
-            font-size:24px;
-        }
-
-        .sidebar ul{
-            list-style:none;
-        }
-
-        .sidebar ul li{
-            margin:15px 0;
-        }
-
-        .sidebar ul li a{
-            text-decoration:none;
-            color:#cbd5e1;
-            display:block;
-            padding:10px;
-            border-radius:8px;
-            transition:0.3s;
-        }
-
-        .sidebar ul li a:hover{
-            background:#1e293b;
-            color:white;
-        }
-
-        /* ================= HERO ================= */
+        /* HERO */
         .hero{
-            grid-area:hero;
-            background:linear-gradient(135deg,#38bdf8,#2563eb);
+            min-height:90vh;
+            display:flex;
+            align-items:center;
+            background: linear-gradient(135deg,#0d6efd,#6610f2);
             color:white;
-            padding:60px 40px;
-            text-align:center;
         }
 
-        .hero h2{
-            font-size:40px;
-            margin-bottom:15px;
+        .hero img{
+            width:100%;
+            border-radius:20px;
+            box-shadow:0 10px 30px rgba(0,0,0,.2);
         }
 
-        .hero p{
-            font-size:18px;
-        }
-
-        /* ================= MAIN CONTENT ================= */
-        .main{
-            grid-area:main;
-            display:grid;
-            grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
-            gap:20px;
-            padding:30px;
-        }
-
-        .card{
-            background:white;
-            padding:40px 20px;
-            border-radius:15px;
-            text-align:center;
-            font-size:20px;
+        .hero-title{
+            font-size:3.5rem;
             font-weight:bold;
-            box-shadow:0 4px 12px rgba(0,0,0,0.08);
-            transition:0.3s;
         }
 
-        .card:hover{
-            transform:translateY(-5px);
+        .hero-text{
+            font-size:1.1rem;
+            margin:20px 0;
         }
 
-        .wide{
-            grid-column:span 2;
-            background:#2563eb;
+        /* BUTTON */
+        .btn-custom{
+            padding:12px 28px;
+            border-radius:50px;
+            font-weight:bold;
+        }
+
+        /* CARDS */
+        .feature-card{
+            border:none;
+            border-radius:20px;
+            transition:.3s;
+            box-shadow:0 5px 15px rgba(0,0,0,.08);
+        }
+
+        .feature-card:hover{
+            transform:translateY(-8px);
+        }
+
+        .feature-icon{
+            font-size:3rem;
+            color:#0d6efd;
+        }
+
+        /* ABOUT */
+        .about{
+            background:white;
+        }
+
+        /* FOOTER */
+        footer{
+            background:#111827;
             color:white;
         }
 
-        /* ================= FOOTER ================= */
-        .footer{
-            grid-area:footer;
-            background:#1e293b;
+        .social-icons a{
             color:white;
-            text-align:center;
-            padding:20px;
-            font-size:15px;
+            font-size:1.3rem;
+            margin:0 10px;
+            transition:.3s;
         }
 
-        /* ================= RESPONSIVE ================= */
+        .social-icons a:hover{
+            color:#0d6efd;
+        }
+
         @media(max-width:768px){
-
-            .container{
-                grid-template-columns:1fr;
-                grid-template-areas:
-                    "header"
-                    "hero"
-                    "sidebar"
-                    "main"
-                    "footer";
-            }
-
-            .header{
-                flex-direction:column;
-                gap:15px;
+            .hero{
                 text-align:center;
+                padding:80px 0;
             }
 
-            .wide{
-                grid-column:span 1;
+            .hero-title{
+                font-size:2.5rem;
             }
         }
-
     </style>
 </head>
 <body>
 
-<div class="container">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg sticky-top shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="bi bi-bootstrap-fill"></i> MyWebsite
+            </a>
 
-    <!-- Header -->
-    <header class="header">
-        <h1>My Grid Website</h1>
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
-        </nav>
-    </header>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <h3>Dashboard</h3>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
 
-        <ul>
-            <li><a href="#">🏠 Home</a></li>
-            <li><a href="#">👤 Profile</a></li>
-            <li><a href="#">📊 Analytics</a></li>
-            <li><a href="#">⚙ Settings</a></li>
-            <li><a href="#">📩 Messages</a></li>
-            <li><a href="#">🚪 Logout</a></li>
-        </ul>
-    </aside>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h2>Welcome to My Website</h2>
-        <p>This hero section spans all columns with a modern responsive layout.</p>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-6">
+                    <h1 class="hero-title">
+                        Build Modern Websites with Bootstrap 5
+                    </h1>
+
+                    <p class="hero-text">
+                        Create responsive and beautiful websites quickly using the latest Bootstrap framework with modern UI components.
+                    </p>
+
+                    <a href="#" class="btn btn-light btn-custom">
+                        Get Started
+                    </a>
+
+                    <a href="#" class="btn btn-outline-light btn-custom ms-2">
+                        Learn More
+                    </a>
+                </div>
+
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="Website">
+                </div>
+
+            </div>
+        </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="main">
+    <!-- FEATURES -->
+    <section class="py-5" id="features">
+        <div class="container">
 
-        <div class="card">Card 1</div>
-        <div class="card">Card 2</div>
-        <div class="card">Card 3</div>
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Website Features</h2>
+                <p class="text-muted">
+                    Modern components and responsive design
+                </p>
+            </div>
 
-        <!-- Spanning Card -->
-        <div class="card wide">
-            Wide Card (Spans 2 Columns)
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="card feature-card p-4 text-center h-100">
+                        <i class="bi bi-phone feature-icon"></i>
+                        <h4 class="mt-3">Responsive Design</h4>
+                        <p class="text-muted">
+                            Works perfectly on desktop, tablet, and mobile devices.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card feature-card p-4 text-center h-100">
+                        <i class="bi bi-speedometer2 feature-icon"></i>
+                        <h4 class="mt-3">Fast Performance</h4>
+                        <p class="text-muted">
+                            Optimized layout and lightweight Bootstrap framework.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card feature-card p-4 text-center h-100">
+                        <i class="bi bi-shield-check feature-icon"></i>
+                        <h4 class="mt-3">Secure Structure</h4>
+                        <p class="text-muted">
+                            Built with modern web standards and clean code.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
         </div>
+    </section>
 
-        <div class="card">Card 4</div>
-        <div class="card">Card 5</div>
+    <!-- ABOUT -->
+    <section class="about py-5" id="about">
+        <div class="container">
 
-    </main>
+            <div class="row align-items-center g-5">
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>© 2026 Grid Layout Demo | All Rights Reserved</p>
+                <div class="col-lg-6">
+                    <img class="img-fluid rounded-4 shadow"
+                        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop"
+                        alt="About">
+                </div>
+
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4">
+                        About Our Website
+                    </h2>
+
+                    <p class="text-muted">
+                        This modern Bootstrap website template is designed with responsiveness, elegant UI, and professional layout.
+                    </p>
+
+                    <div class="mt-4">
+                        <div class="d-flex mb-3">
+                            <i class="bi bi-check-circle-fill text-primary me-3"></i>
+                            <span>Clean Bootstrap 5 Design</span>
+                        </div>
+
+                        <div class="d-flex mb-3">
+                            <i class="bi bi-check-circle-fill text-primary me-3"></i>
+                            <span>Modern User Interface</span>
+                        </div>
+
+                        <div class="d-flex">
+                            <i class="bi bi-check-circle-fill text-primary me-3"></i>
+                            <span>Fully Responsive Layout</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="py-5 bg-light" id="contact">
+        <div class="container">
+
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Contact Us</h2>
+                <p class="text-muted">
+                    Send us your message
+                </p>
+            </div>
+
+            <div class="row justify-content-center">
+
+                <div class="col-lg-8">
+
+                    <div class="card border-0 shadow-lg rounded-4">
+                        <div class="card-body p-4">
+
+                            <form>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Full Name</label>
+                                        <input type="text" class="form-control form-control-lg">
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-control form-control-lg">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Message</label>
+                                    <textarea rows="5" class="form-control"></textarea>
+                                </div>
+
+                                <button class="btn btn-primary btn-lg w-100">
+                                    Send Message
+                                </button>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-4">
+        <div class="container text-center">
+
+            <h5 class="fw-bold mb-3">
+                MyWebsite
+            </h5>
+
+            <div class="social-icons mb-3">
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-twitter-x"></i></a>
+                <a href="#"><i class="bi bi-github"></i></a>
+            </div>
+
+            <p class="mb-0">
+                © 2026 All Rights Reserved | Bootstrap 5 Website
+            </p>
+
+        </div>
     </footer>
 
-</div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
