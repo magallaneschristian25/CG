@@ -1,0 +1,118 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base */
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+}
+
+/* MAIN GRID */
+.container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas:
+        "header header"
+        "hero hero"
+        "main sidebar"
+        "footer footer";
+    gap: 15px;
+    padding: 15px;
+}
+
+/* HEADER */
+.header {
+    grid-area: header;
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+}
+
+.header nav {
+    margin-top: 10px;
+}
+
+.header a {
+    color: white;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+/* HERO */
+.hero {
+    grid-area: hero;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+    padding: 40px;
+    text-align: center;
+}
+
+/* MAIN GRID (cards) */
+.main {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+/* CARD STYLE */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* SPANNING CARD */
+.wide {
+    grid-column: span 2;
+    background: #ffcc00;
+}
+
+/* SIDEBAR */
+.sidebar {
+    grid-area: sidebar;
+    background: #ecf0f1;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* FOOTER */
+.footer {
+    grid-area: footer;
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "hero"
+            "main"
+            "sidebar"
+            "footer";
+    }
+
+    .main {
+        grid-template-columns: 1fr;
+    }
+
+    .wide {
+        grid-column: span 1;
+    }
+}
